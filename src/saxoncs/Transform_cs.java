@@ -1,3 +1,5 @@
+package saxoncs;
+
 import net.sf.saxon.Configuration;
 import net.sf.saxon.Transform;
 import net.sf.saxon.s9api.Processor;

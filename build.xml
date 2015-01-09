@@ -1,0 +1,52 @@
+<project name="SaxonHE_cs" basedir="." default="default">
+
+    <property name="src.dir"     value="src"/>
+    <property name="build.dir"   value="build"/>
+    <property name="res.dir"     value="resources"/>
+    <property name="classes.dir" value="${build.dir}/classes"/>
+    <property name="jar.dir"     value="${build.dir}/jars"/>
+    <property name="lib.dir"     value="lib"/>
+    <property name="main-class"  value="saxoncs.SaxonCS"/>
+    <property name="jar-file"    value="${jar.dir}/${ant.project.name}.jar"/>
+    <property name="sample.dir"  value="${build.dir}/sample"/>
+
+    <path id="classpath">
+        <pathelement location="lib/saxon9he.jar"/>
+    </path>
+
+    <target name="clean">
+        <delete dir="${build.dir}"/>
+    </target>
+
+    <target name="compile">
+        <mkdir dir="${classes.dir}"/>
+        <javac srcdir="${src.dir}"
+               destdir="${classes.dir}"
+               includeantruntime="true">
+            <classpath refid="classpath"/>
+        </javac>
+    </target>
+
+    <target name="jar" depends="compile">
+        <mkdir dir="${jar.dir}"/>
+        <jar destfile="${jar-file}" basedir="${classes.dir}">
+            <manifest>
+                <attribute name="Main-Class" value="${main-class}"/>
+                <attribute name="Class-Path" value="saxon9he.jar"/>
+            </manifest>
+        </jar>
+        <copy file="${lib.dir}/saxon9he.jar" todir="${jar.dir}"/>
+        <delete dir="${classes.dir}"/>
+    </target>
+
+    <target name="sample" depends="jar">
+        <echo message="Running a sample transformation. Results in directory ${basedir}/${sample.dir}"/>
+        <java jar="${jar-file}" fork="true">
+            <arg value="-xsl:${res.dir}/data.xsl"/>
+            <arg value="-s:${res.dir}/src.xml"/>
+            <arg value="-o:${sample.dir}/result.html"/>
+        </java>
+    </target>
+
+    <target name="default" depends="clean,compile,jar,sample"/>
+</project>
