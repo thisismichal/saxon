@@ -5,7 +5,7 @@
 
 
 ##Using the Czech translation in XSLT/XML##
-The only thing that needs to be changed in order for the translation to be used is to add/change the lang parameter **lang=cs** when formatting the numbers and dates with functions such as format-date() or simply formating the xsl:number element.
+The only thing that needs to be changed in order for the translation to be used is to add/change the lang parameter **lang='cs'** when formatting the numbers and dates with functions such as format-date() or simply formating the xsl:number element.
 ```xml
 <xsl:number value='364' format='w' lang='cs'/>
 format-date(xs:date('2015-10-11'), '[D]. [MNn] [Y]', 'cs', 'AD', '')
