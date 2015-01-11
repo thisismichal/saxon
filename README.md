@@ -52,7 +52,9 @@ SaxonCS.transform(args);
 
 
 ###Ant build script###
-Running the default ant target produces the build directory which contains the jars directory with the produced jar and copied saxon9he.jar (the produced jar expects the saxon9he.jar to be in the same directory) and also a sample directory with the result of sample XSLT transformation. This results presents the basic translations enabled by the Numberer_cs.java
+Running the default ant target produces the build directory which contains the jars directory with the produced jar and copied saxon9he.jar (the produced jar expects the saxon9he.jar to be in the same directory) and also a sample directory with the result of sample XSLT transformation. This results presents the basic translations enabled by the Numberer_cs.java.
+
+**You need to mkdir the lib folder and supply the saxon9he.jar**
 
 
 
