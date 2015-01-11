@@ -22,7 +22,7 @@
         <mkdir dir="${classes.dir}"/>
         <javac srcdir="${src.dir}"
                destdir="${classes.dir}"
-               includeantruntime="true">
+               includeantruntime="false">
             <classpath refid="classpath"/>
         </javac>
     </target>
@@ -46,6 +46,7 @@
             <arg value="-s:${res.dir}/src.xml"/>
             <arg value="-o:${sample.dir}/result.html"/>
         </java>
+        <copy file="${res.dir}/style.css" todir="${sample.dir}"/>
     </target>
 
     <target name="default" depends="clean,compile,jar,sample"/>

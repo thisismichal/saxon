@@ -43,7 +43,7 @@ These parameters contain their respective **paths** to:
 ### Java API ###
 The java classes in package saxoncs can be used both independently and via the iterface in form on the SaxonCS.java class. The only job of SaxonCS.java is to register the appropriate configuration for the supplied saxon library a delegate the arguments back to the library.
 When calling the SaxonCS in code simply use the supplied static transform method.
-```
+```java
 SaxonCS.transform(args);
 ```
 
