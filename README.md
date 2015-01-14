@@ -8,6 +8,9 @@
 The only thing that needs to be changed in order for the translation to be used is to add/change the lang parameter **lang='cs'** when formatting the numbers and dates with functions such as format-date() or simply formating the xsl:number element.
 ```xml
 <xsl:number value='364' format='w' lang='cs'/>
+```
+
+```ruby
 format-date(xs:date('2015-10-11'), '[D]. [MNn] [Y]', 'cs', 'AD', '')
 ```
 The syntax doesn't change except for one thing mentioned below. The translations contains everything regarding the usual use of dates.
@@ -16,6 +19,7 @@ One thing to be aware of when trying to convert numbers to ordinal words is that
 ```xml
  <xsl:number value='5' format='w' ordinal="XXX" lang='cs'/>
 ```
+
 |  XXX |  result |
 |------|---------|
 | -m   |  patý   |
@@ -70,8 +74,25 @@ to 'cs'.
    supply via command line.
 
 
-----------
+------------------
+ ### Saxon Configuration File ###
 
+ Alternatively, you can register the using the configuration xml file.
+ The instructions are specified in the Saxonica documentation at
+ this adress http://www.saxonica.com/documentation9.5/configuration/configuration-file/
+
+ The portion of the sample configuration provided relevant to localization is
+ ```xml
+ <localizations defaultLanguage="en" defaultCountry="US">
+   <localization lang="da" class="net.sf.saxon.option.local.Numberer_da"/>
+   <localization lang="de" class="net.sf.saxon.option.local.Numberer_de"/>
+ </localizations>
+ ```
+
+ Note that you need to supply the fully qualified name of the class and that this
+ method is not support in Saxon HE(Home Edition) .
+
+----------
 
 ###Ant build script###
 Running the default ant target produces the build directory which contains the jars directory with the produced jar and copied saxon9he.jar (the produced jar expects the saxon9he.jar to be in the same directory) and also a sample directory with the result of sample XSLT transformation. This results presents the basic translations enabled by the Numberer_cs.java.
