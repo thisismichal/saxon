@@ -40,12 +40,32 @@ These parameters contain their respective **paths** to:
  - **-o** the output file
 
 
-### Java API ###
-The java classes in package saxoncs can be used both independently and via the iterface in form on the SaxonCS.java class. The only job of SaxonCS.java is to register the appropriate configuration for the supplied saxon library a delegate the arguments back to the library.
-When calling the SaxonCS in code simply use the supplied static transform method.
-```java
-SaxonCS.transform(args);
-```
+------------------
+### Saxon Java API ###
+In order to use the Numberer_cs class without the supplied wrapper you need to
+take couple simple steps. These steps can be easily observed by just browsing the
+```Saxon_cs``` and ```Transform_cs``` classes.
+
+1. You need to create a new instance of the ```net.sf.saxon.Configuration```.
+2. This instance contains a method ```setLocalizerFactory(LocalizerFactory f)```.
+3. Register your own ```LocalizerFactory``` with this method.
+   Your LocalizerFactory instance needs to override the ```getNumberer(String language, String country)```
+method and return an instance of ```Numberer_cs``` when the languages parameter is equal
+to 'cs'.
+4. Now that the ```net.sf.saxon.Configuration``` instance has the ```LocalizerFactory``` with
+   you need to extend the ```net.sf.saxon.Transform``` class and override the abstract method
+   like this:
+   ```@Override
+   public void initializeConfiguration(Configuration config) {
+     this.processor = new Processor(config);
+     }```
+
+5. Instantiate your ```Transform``` sublcass and supply the ```Configuration``` instance
+   to the overriden method.
+
+6. This ```Transform``` instance is everything you need for the transformation.
+   You can now call the ```doTransform(args, "")``` on it with the arguments you would normally
+   supply via command line.
 
 
 ----------
