@@ -75,7 +75,8 @@ to 'cs'.
 
 
 ------------------
- ### Saxon Configuration File ###
+
+### Saxon Configuration File ###
 
  Alternatively, you can register the using the configuration xml file.
  The instructions are specified in the Saxonica documentation at
