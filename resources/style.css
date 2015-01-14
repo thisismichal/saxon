@@ -44,4 +44,8 @@
     border-width:0px 0px 1px 1px;
 }.Section {
     background-color: #A6A6A6;
+}.Months td {
+    text-align: center;
+}.Numbers td {
+    text-align: center;
 }

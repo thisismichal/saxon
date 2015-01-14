@@ -91,7 +91,46 @@
                         <td><xsl:number value='92' format='w' ordinal="-s" lang='cs'/></td>
                         <td><xsl:number value='92' format='w' ordinal="-s" lang='en'/></td>
                     </tr>
-
+                </table>
+                <table class="Months" border="1" cellpadding="10">
+                    <tr>
+                        <th class="Section" colspan="3">Months</th>
+                    </tr>
+                    <tr>
+                        <th>#</th>
+                        <th>English</th>
+                        <th>Czech</th>
+                    </tr>
+                    <xsl:for-each select="for $i in 1 to 12 return $i">
+                      <tr>
+                        <xsl:variable name="monthNum" as="xs:string" select="concat('2015-', format-number(., '00'), '-11')"/>
+                        <td><xsl:value-of select='.'/></td>
+                        <td><xsl:value-of select="format-date(xs:date($monthNum), '[MNn]', 'en', 'AD', '')"/></td>
+                        <td><xsl:value-of select="format-date(xs:date($monthNum), '[MNn]', 'cs', 'AD', '')"/></td>
+                      </tr>
+                    </xsl:for-each>
+                </table>
+                <table class="Numbers" border="1" cellpadding="10">
+                    <tr>
+                        <th class="Section" colspan="5">Numbers</th>
+                    </tr>
+                    <tr>
+                        <th>#</th>
+                        <th>Cardinal</th>
+                        <th>Ordinal (-m)</th>
+                        <th>Ordinal (-ž)</th>
+                        <th>Ordinal (-s)</th>
+                    </tr>
+                      <xsl:for-each select="for $i in 1 to 1000 return $i">
+                    <tr>
+                        <xsl:variable name="num" as="xs:decimal" select="."/>
+                        <td><xsl:value-of select='$num'/></td>
+                        <td><xsl:number value='$num' format='w' lang='cs'/></td>
+                        <td><xsl:number value='$num' format='w' ordinal="-m" lang='cs'/></td>
+                        <td><xsl:number value='$num' format='w' ordinal="-ž" lang='cs'/></td>
+                        <td><xsl:number value='$num' format='w' ordinal="-s" lang='cs'/></td>
+                      </tr>
+                    </xsl:for-each>
                 </table>
             </body>
         </html>

@@ -1,4 +1,4 @@
-#SaxonCS#
+Ôªø#SaxonCS#
 
 
 ----------
@@ -18,9 +18,9 @@ One thing to be aware of when trying to convert numbers to ordinal words is that
 ```
 |  XXX |  result |
 |------|---------|
-| -m   |  pat˝   |
-| -û   |  p·t·   |
-| -s   |  p·tÈ   |
+| -m   |  pat√Ω   |
+| -≈æ   |  p√°t√°   |
+| -s   |  p√°t√©   |
 
 
 ----------

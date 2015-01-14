@@ -207,17 +207,14 @@ public class Numberer_cs extends AbstractNumberer {
 
     // This method sets the offset needed to achieve proper spelling for
     // different grammatical cases
-    // such as "druhá" vs. "druhé"
+    // such as "druhï¿½" vs. "druhï¿½"
     private void setSuffixOffset(final String ordinalParam) {
-        switch (ordinalParam) {
-        case "-\u017e":
-            suffixOffset = 1;
-            break;
-        case "-s":
-            suffixOffset = 2;
-            break;
-        default:
-            suffixOffset = 0;
+        if (ordinalParam.equals("-\u017e")) {
+          suffixOffset = 1;
+        } else if (ordinalParam.equals("-s")) {
+          suffixOffset = 2;
+        } else {
+          suffixOffset = 0;
         }
     }
 
