@@ -55,10 +55,12 @@ to 'cs'.
 4. Now that the ```net.sf.saxon.Configuration``` instance has the ```LocalizerFactory``` with
    you need to extend the ```net.sf.saxon.Transform``` class and override the abstract method
    like this:
-   ```@Override
+   ```java
+   @Override
    public void initializeConfiguration(Configuration config) {
      this.processor = new Processor(config);
-     }```
+     }
+   ```
 
 5. Instantiate your ```Transform``` sublcass and supply the ```Configuration``` instance
    to the overriden method.
